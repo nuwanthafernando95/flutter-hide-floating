@@ -9,7 +9,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   ScrollController _scrollController =
       new ScrollController(); // set controller on scrolling
-  bool isScrollingDown = false;
   bool _show = true;
   List<String> items = [];
 
@@ -48,17 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
           ScrollDirection.reverse) {
-        if (!isScrollingDown) {
-          isScrollingDown = true;
           hideFloationButton();
-        }
       }
       if (_scrollController.position.userScrollDirection ==
           ScrollDirection.forward) {
-        if (isScrollingDown) {
-          isScrollingDown = false;
           showFloationButton();
-        }
       }
     });
   }
